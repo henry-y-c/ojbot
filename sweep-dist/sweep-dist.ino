@@ -35,7 +35,7 @@ void setup() {
   lidar.begin(0, true);
   lidar.configure(0);
   
-  delay(SWEEP_DELAY);
+  delay(INIT_DELAY);
 }
 
 void loop() {
