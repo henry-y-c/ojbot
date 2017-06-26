@@ -39,14 +39,15 @@ void setup() {
 }
 
 void loop() {
-  double distance = lidar.distance();
-  Serial.println(String(panAngle) + "," + String(tiltAngle) + "," + String(distance));
-  moveServo();
+  if (moveServo()) {
+    double distance = lidar.distance();
+    Serial.println(String(panAngle) + "," + String(tiltAngle) + "," + String(distance));
+  }
 }
 
-void moveServo() {
+bool moveServo() {
   if (tiltAngle > TILT_MAX) {
-    return;
+    return false;
   }
   
   if (isForwardPan) {
@@ -68,4 +69,5 @@ void moveServo() {
   pan.write(panAngle);
   tilt.write(tiltAngle);
   delay(SWEEP_DELAY);
+  return true;
 }
