@@ -9,9 +9,6 @@ def to_numbers(line):
         return (False, '[Error] There are not exactly 3 numbers.', parsed_str)
     parsed_number = [0, 0, 0]
     try:
-        # parsed_number[0] = int(parsed_str[0])
-        # parsed_number[1] = int(parsed_str[1])
-        # parsed_number[2] = float(parsed_str[2])
         parsed_number = [float(str) for str in parsed_str]
     except ValueError:
         return (False, '[Error] Some numbers cannot be parsed.', parsed_str)
